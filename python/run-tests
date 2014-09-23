@@ -70,6 +70,8 @@ export PYSPARK_DOC_TEST=1
 run_test "pyspark/broadcast.py"
 run_test "pyspark/accumulators.py"
 run_test "pyspark/serializers.py"
+run_test "pyspark/streaming/duration.py"
+run_test "pyspark/streaming/util.py"
 unset PYSPARK_DOC_TEST
 run_test "pyspark/shuffle.py"
 run_test "pyspark/tests.py"
@@ -83,6 +85,9 @@ run_test "pyspark/mllib/stat.py"
 run_test "pyspark/mllib/tests.py"
 run_test "pyspark/mllib/tree.py"
 run_test "pyspark/mllib/util.py"
+if [ -n "$_RUN_STREAMING_TESTS" ]; then
+  run_test "pyspark/streaming/tests.py"
+fi
 
 # Try to test with PyPy
 if [ $(which pypy) ]; then
